@@ -31,9 +31,9 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://dongxiao-cashmere.com/sitemap.xml
-Sitemap: https://dongxiao-cashmere.com/sitemap-en.xml
-Sitemap: https://dongxiao-cashmere.com/sitemap-zh.xml
+Sitemap: https://erdosdx.com/sitemap.xml
+Sitemap: https://erdosdx.com/sitemap-en.xml
+Sitemap: https://erdosdx.com/sitemap-zh.xml
 
 # Request rate
 Request-rate: 30/1m

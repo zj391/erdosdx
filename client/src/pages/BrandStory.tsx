@@ -1,12 +1,23 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Leaf, Award, Globe, Heart } from 'lucide-react';
 
 export default function BrandStory() {
   const { t } = useTranslation();
 
   return (
+    <>
+      <Helmet>
+        <title>Brand Story | DONGXIAO® CASHMERE - Weaving the Oasis</title>
+        <meta name="description" content="Discover the story of DONGXIAO® CASHMERE: from desert restoration to world-class cashmere production. 23 years of excellence, sustainability, and heritage from Ordos, Inner Mongolia." />
+        <meta property="og:title" content="Brand Story | DONGXIAO® CASHMERE - Weaving the Oasis" />
+        <meta property="og:description" content="Discover the story of DONGXIAO® CASHMERE: from desert restoration to world-class cashmere production. 23 years of excellence, sustainability, and heritage from Ordos, Inner Mongolia." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Brand Story | DONGXIAO® CASHMERE - Weaving the Oasis" />
+        <meta name="twitter:description" content="Discover the story of DONGXIAO® CASHMERE: from desert restoration to world-class cashmere production. 23 years of excellence, sustainability, and heritage from Ordos, Inner Mongolia." />
+      </Helmet>
     <div className="min-h-screen flex flex-col bg-background">
       <Navigation />
 

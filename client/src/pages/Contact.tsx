@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -41,6 +42,16 @@ export default function Contact() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Contact DONGXIAO® CASHMERE | B2B Wholesale Inquiries</title>
+        <meta name="description" content="Get in touch with DONGXIAO® CASHMERE for wholesale pricing, custom orders, and B2B solutions. WhatsApp, email, and contact form available." />
+        <meta property="og:title" content="Contact DONGXIAO® CASHMERE | B2B Wholesale Inquiries" />
+        <meta property="og:description" content="Get in touch with DONGXIAO® CASHMERE for wholesale pricing, custom orders, and B2B solutions. WhatsApp, email, and contact form available." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact DONGXIAO® CASHMERE | B2B Wholesale Inquiries" />
+        <meta name="twitter:description" content="Get in touch with DONGXIAO® CASHMERE for wholesale pricing, custom orders, and B2B solutions. WhatsApp, email, and contact form available." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
 

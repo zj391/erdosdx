@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 const FAQ_QUESTIONS = [
   { category: 'moq', key: 'moq1' },
@@ -26,6 +27,16 @@ export default function FAQ() {
   const categories = Array.from(new Set(FAQ_QUESTIONS.map((item) => item.category)));
 
   return (
+    <>
+      <Helmet>
+        <title>FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions</title>
+        <meta name="description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
+        <meta property="og:title" content="FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions" />
+        <meta property="og:description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions" />
+        <meta name="twitter:description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
 

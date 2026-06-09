@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import { Link } from "wouter";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import { blogPosts } from "@/data/blogPosts";
@@ -9,6 +10,16 @@ export default function Blog() {
   const { t } = useTranslation();
 
   return (
+    <>
+      <Helmet>
+        <title>Blog | DONGXIAO® CASHMERE - Industry Insights & News</title>
+        <meta name="description" content="Stay updated with the latest cashmere industry news, B2B insights, sustainable practices, and company updates from DONGXIAO® CASHMERE." />
+        <meta property="og:title" content="Blog | DONGXIAO® CASHMERE - Industry Insights & News" />
+        <meta property="og:description" content="Stay updated with the latest cashmere industry news, B2B insights, sustainable practices, and company updates from DONGXIAO® CASHMERE." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog | DONGXIAO® CASHMERE - Industry Insights & News" />
+        <meta name="twitter:description" content="Stay updated with the latest cashmere industry news, B2B insights, sustainable practices, and company updates from DONGXIAO® CASHMERE." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-amber-50 to-background py-16 md:py-24">

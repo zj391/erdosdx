@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import CaseStudies from '@/components/CaseStudies';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle, Zap, Award } from 'lucide-react';
 
 interface ProductionStep {
@@ -100,6 +101,16 @@ export default function Production() {
   const { t } = useTranslation();
 
   return (
+    <>
+      <Helmet>
+        <title>Production Process | DONGXIAO® CASHMERE - From Raw Fiber to Luxury Knitwear</title>
+        <meta name="description" content="Explore DONGXIAO® CASHMERE's complete production process: dehairing, spinning, knitting, quality control. 23+ years of precision craftsmanship in cashmere manufacturing." />
+        <meta property="og:title" content="Production Process | DONGXIAO® CASHMERE - From Raw Fiber to Luxury Knitwear" />
+        <meta property="og:description" content="Explore DONGXIAO® CASHMERE's complete production process: dehairing, spinning, knitting, quality control. 23+ years of precision craftsmanship in cashmere manufacturing." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Production Process | DONGXIAO® CASHMERE - From Raw Fiber to Luxury Knitwear" />
+        <meta name="twitter:description" content="Explore DONGXIAO® CASHMERE's complete production process: dehairing, spinning, knitting, quality control. 23+ years of precision craftsmanship in cashmere manufacturing." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
 

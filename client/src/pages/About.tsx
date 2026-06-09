@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import AdvantagesAndCertifications from '@/components/AdvantagesAndCertifications';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { CheckCircle, Award, Globe, Users, Leaf, Zap } from 'lucide-react';
 
 export default function About() {
@@ -9,6 +10,16 @@ export default function About() {
   const craftImage = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663492422051/QtdHVLd8iFX9d9FCuwFdL2/craftsmanship-detail-CE869gD6VSq4U3ffECcdWG.webp';
 
   return (
+    <>
+      <Helmet>
+        <title>About DONGXIAO® CASHMERE | Premium Wholesale Supplier</title>
+        <meta name="description" content="Learn about DONGXIAO® CASHMERE's 30+ years of expertise in premium cashmere production from Inner Mongolia. Trusted by international B2B buyers." />
+        <meta property="og:title" content="About DONGXIAO® CASHMERE | Premium Wholesale Supplier" />
+        <meta property="og:description" content="Learn about DONGXIAO® CASHMERE's 30+ years of expertise in premium cashmere production from Inner Mongolia. Trusted by international B2B buyers." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About DONGXIAO® CASHMERE | Premium Wholesale Supplier" />
+        <meta name="twitter:description" content="Learn about DONGXIAO® CASHMERE's 30+ years of expertise in premium cashmere production from Inner Mongolia. Trusted by international B2B buyers." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
 

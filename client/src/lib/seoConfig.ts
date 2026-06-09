@@ -3,7 +3,7 @@
 export const seoConfig = {
   // Site Information
   siteName: 'DONGXIAO® CASHMERE',
-  siteUrl: 'https://dongxiao-cashmere.com',
+  siteUrl: 'https://erdosdx.com',
   description: 'Premium wholesale cashmere products from Inner Mongolia. 30+ years of expertise in luxury knitwear, sweaters, scarves, hats, and accessories for international B2B buyers.',
   
   // Social Media
@@ -36,35 +36,35 @@ export const seoConfig = {
       title: 'DONGXIAO®CASHMERE - Premium Wholesale Cashmere & Luxury Knitwear | B2B',
       description: 'Discover premium wholesale cashmere products from Inner Mongolia\'s leading supplier. 30+ years of expertise in luxury knitwear for international B2B buyers.',
       keywords: 'cashmere wholesale, luxury knitwear, B2B cashmere supplier, Inner Mongolia cashmere, premium cashmere products, wholesale sweaters, cashmere scarves',
-      ogImage: 'https://dongxiao-cashmere.com/og-home.png',
+      ogImage: 'https://erdosdx.com/og-home.png',
       ogType: 'website',
     },
     products: {
       title: 'Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier',
       description: 'Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available.',
       keywords: 'cashmere products, wholesale knitwear, cashmere sweaters, cashmere scarves, luxury accessories, B2B cashmere',
-      ogImage: 'https://dongxiao-cashmere.com/og-products.png',
+      ogImage: 'https://erdosdx.com/og-products.png',
       ogType: 'website',
     },
     about: {
       title: 'About DONGXIAO® CASHMERE | Premium Wholesale Supplier',
       description: 'Learn about DONGXIAO® CASHMERE\'s 30+ years of expertise in premium cashmere production from Inner Mongolia. Trusted by international B2B buyers.',
       keywords: 'about cashmere supplier, DONGXIAO cashmere, Inner Mongolia cashmere producer, heritage knitwear',
-      ogImage: 'https://dongxiao-cashmere.com/og-about.png',
+      ogImage: 'https://erdosdx.com/og-about.png',
       ogType: 'website',
     },
     brandStory: {
       title: 'Brand Story | DONGXIAO® CASHMERE - Weaving the Oasis',
       description: 'Discover the story of DONGXIAO® CASHMERE: from desert restoration to world-class cashmere production. 23 years of excellence, sustainability, and heritage from Ordos, Inner Mongolia.',
       keywords: 'cashmere brand story, Ordos cashmere, sustainable cashmere, Kubuqi desert, heritage cashmere, eco-friendly knitwear, cashmere sustainability',
-      ogImage: 'https://dongxiao-cashmere.com/og-brand-story.png',
+      ogImage: 'https://erdosdx.com/og-brand-story.png',
       ogType: 'website',
     },
     contact: {
       title: 'Contact DONGXIAO® CASHMERE | B2B Wholesale Inquiries',
       description: 'Get in touch with DONGXIAO® CASHMERE for wholesale pricing, custom orders, and B2B solutions. WhatsApp, email, and contact form available.',
       keywords: 'contact cashmere supplier, wholesale inquiry, B2B contact, cashmere wholesale',
-      ogImage: 'https://dongxiao-cashmere.com/og-contact.png',
+      ogImage: 'https://erdosdx.com/og-contact.png',
       ogType: 'website',
     },
   },
@@ -74,8 +74,8 @@ export const seoConfig = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'DONGXIAO® CASHMERE',
-    url: 'https://dongxiao-cashmere.com',
-    logo: 'https://dongxiao-cashmere.com/logo.png',
+    url: 'https://erdosdx.com',
+    logo: 'https://erdosdx.com/logo.png',
     description: 'Premium wholesale cashmere supplier from Inner Mongolia',
     sameAs: [
       'https://www.linkedin.com/company/dongxiao-cashmere',
@@ -95,7 +95,7 @@ export const seoConfig = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'DONGXIAO® CASHMERE',
-    image: 'https://dongxiao-cashmere.com/og-home.png',
+    image: 'https://erdosdx.com/og-home.png',
     description: 'Premium wholesale cashmere supplier from Inner Mongolia. 23+ years of expertise in luxury knitwear, sustainable production, and heritage craftsmanship.',
     address: {
       '@type': 'PostalAddress',
@@ -106,7 +106,7 @@ export const seoConfig = {
     },
     telephone: '+86-156-6185-3999',
     email: 'dongxiaocashmere@erdosdx.com',
-    url: 'https://dongxiao-cashmere.com',
+    url: 'https://erdosdx.com',
     sameAs: [
       'https://www.linkedin.com/company/dongxiao-cashmere',
       'https://www.instagram.com/dongxiao_cashmere',

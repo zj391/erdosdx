@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -83,6 +84,16 @@ export default function Products() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier</title>
+        <meta name="description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+        <meta property="og:title" content="Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier" />
+        <meta property="og:description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier" />
+        <meta name="twitter:description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+      </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
 
