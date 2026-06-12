@@ -1,4 +1,3 @@
-import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -43,6 +42,9 @@ async function startServer() {
       createContext,
     })
   );
+  // Privacy Policy is handled by React Router (wouter) in client/src/App.tsx
+  // No Express route needed here - Vite dev server passes /privacy-policy to React
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);

@@ -12,20 +12,27 @@ import ChatWidget from './components/ChatWidget';
 import WhatsAppButton from './components/WhatsAppButton';
 import { initializeGA4 } from './lib/analytics';
 import { seoConfig } from './lib/seoConfig';
-import Home from "./pages/Home";
+import React from "react";
+import Home from "@/pages/Home";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Production from "./pages/Production";
-import BrandStory from "./pages/BrandStory";
-import FAQ from "./pages/FAQ";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
+import BrandStory from "@/pages/BrandStory";
+import FAQ from "@/pages/FAQ";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
+import TestPage from "@/pages/TestPage";
+
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/products/:id">
+        {({ id }) => <ProductDetail productId={id} />}
+      </Route>
       <Route path="/products" component={Products} />
       <Route path="/brand-story" component={BrandStory} />
       <Route path="/about" component={About} />
@@ -34,21 +41,16 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/contact" component={Contact} />
+      <Route path="/privacy-policy"><PrivacyPolicyPage /></Route>
+      <Route path="/test" component={TestPage} />
       <Route path="/404" component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   useEffect(() => {
-    // Initialize Google Analytics 4
     initializeGA4();
   }, []);
 
@@ -63,12 +65,11 @@ function App() {
       <ErrorBoundary>
         <ThemeProvider
           defaultTheme="light"
-          // switchable
         >
           <TooltipProvider>
             <Toaster />
             <ChatWidget />
-            <WhatsAppButton 
+            <WhatsAppButton
               phoneNumber="8615661853999"
               message="Hello! I am interested in your premium cashmere products. Could you please provide more information and a quote?"
               position="bottom-right"

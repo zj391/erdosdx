@@ -70,7 +70,7 @@ export default function Footer() {
             © 2002 DONGXIAO® CASHMERE. {t('footer.allRights')}
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">{t('footer.privacy')}</a>
+            <a href="/privacy-policy" className="text-sm text-muted-foreground hover:text-accent transition-colors">{t('footer.privacy')}</a>
             <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors">{t('footer.terms')}</a>
           </div>
         </div>

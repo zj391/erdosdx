@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import InquiryForm from '@/components/InquiryForm';
-import EnhancedInquiryForm from '@/components/EnhancedInquiryForm';
 import FAQ from '@/components/FAQ';
 import { useProducts } from '@/hooks/useProducts';
-import { ChevronDown, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, Search, ChevronLeft, ChevronRight, X, Package, Shield, Clock, Star } from 'lucide-react';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 const PAGE_SIZE = 18;
 
@@ -39,6 +39,10 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [selectedModalProduct, setSelectedModalProduct] = useState<any>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImageIdx, setModalImageIdx] = useState(0);
+  const [modalInquiry, setModalInquiry] = useState(false);
   const { data: productsData, loading } = useProducts();
 
   const filtered = useMemo(() => {
@@ -63,9 +67,14 @@ export default function Products() {
     setSearchQuery('');
   }
 
-  function handleSearch(q: string) {
+ function handleSearch(q: string) {
     setSearchQuery(q);
     setPage(1);
+  }
+
+  function handleProductClick(product: any) {
+    setSelectedModalProduct(product);
+    setModalOpen(true);
   }
 
   function getImageUrl(product: any): string {
@@ -185,11 +194,12 @@ export default function Products() {
                   return (
                     <div
                       key={product.id}
-                      className="bg-card rounded-lg border border-border overflow-hidden hover:border-accent transition-colors group"
+                      onClick={() => handleProductClick(product)}
+                      className="bg-card rounded-lg border border-border overflow-hidden hover:border-accent transition-colors group cursor-pointer flex flex-col"
                     >
                       {/* Product Image */}
                       {imgUrl ? (
-                        <div className="h-48 bg-gradient-to-br from-accent/10 to-secondary/10 overflow-hidden">
+                        <div className="h-48 bg-gradient-to-br from-accent/10 to-secondary/10 overflow-hidden flex-shrink-0">
                           <img
                             src={imgUrl}
                             alt={product.name}
@@ -200,7 +210,7 @@ export default function Products() {
                           />
                         </div>
                       ) : (
-                        <div className="h-48 bg-gradient-to-br from-accent/10 to-secondary/10 flex items-center justify-center group-hover:from-accent/20 group-hover:to-secondary/20 transition-colors">
+                        <div className="h-48 bg-gradient-to-br from-accent/10 to-secondary/10 flex items-center justify-center flex-shrink-0 group-hover:from-accent/20 group-hover:to-secondary/20 transition-colors">
                           <div className="text-center">
                             <div className="text-4xl mb-2">🧶</div>
                             <p className="text-xs text-muted-foreground">{t('products.premiumCashmere')}</p>
@@ -209,12 +219,12 @@ export default function Products() {
                       )}
 
                       {/* Product Info */}
-                      <div className="p-6">
-                        <h3 className="font-bold text-lg mb-2 line-clamp-2 text-foreground">{product.name}</h3>
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{product.description}</p>
+                      <div className="p-5 flex flex-col flex-1">
+                        <h3 className="font-bold text-base mb-2 line-clamp-2 text-foreground min-h-[2.5rem]">{product.name}</h3>
+                        <p className="text-sm text-muted-foreground mb-3 line-clamp-2 flex-shrink-0">{product.description}</p>
 
                         {/* Product Details */}
-                        <div className="space-y-2 mb-4 text-sm">
+                        <div className="space-y-1.5 mb-3 text-sm flex-shrink-0">
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">{t('products.material')}:</span>
                             <span className="font-semibold text-foreground">{product.material}</span>
@@ -237,17 +247,17 @@ export default function Products() {
 
                         {/* Colors */}
                         {product.colors && product.colors.length > 0 && (
-                          <div className="mb-4">
-                            <p className="text-xs text-muted-foreground mb-2">{t('products.colors')}:</p>
-                            <div className="flex flex-wrap gap-2">
-                              {product.colors.slice(0, 6).map((color: string, idx: number) => (
-                                <span key={idx} className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">
+                          <div className="mb-3 flex-shrink-0">
+                            <p className="text-xs text-muted-foreground mb-1.5">{t('products.colors')}:</p>
+                            <div className="flex flex-wrap gap-1">
+                              {product.colors.slice(0, 5).map((color: string, idx: number) => (
+                                <span key={idx} className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded">
                                   {color}
                                 </span>
                               ))}
-                              {product.colors.length > 6 && (
-                                <span className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">
-                                  +{product.colors.length - 6}
+                              {product.colors.length > 5 && (
+                                <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded">
+                                  +{product.colors.length - 5}
                                 </span>
                               )}
                             </div>
@@ -256,8 +266,8 @@ export default function Products() {
 
                         {/* CTA */}
                         <button
-                          onClick={() => handleRequestQuote(product)}
-                          className="w-full px-4 py-2 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-[#C9A227] transition-colors text-sm"
+                          onClick={(e) => { e.stopPropagation(); handleRequestQuote(product); }}
+                          className="mt-auto w-full px-4 py-2 bg-accent text-accent-foreground rounded-md font-semibold hover:bg-[#C9A227] transition-colors text-sm"
                         >
                           {t('products.requestQuote')}
                         </button>
@@ -379,6 +389,160 @@ export default function Products() {
 
       <FAQ />
       <Footer />
+
+      {/* Product Detail Modal */}
+      {selectedModalProduct && (
+        <Dialog open={modalOpen} onOpenChange={(v) => { setModalOpen(v); if (!v) setModalInquiry(false); }}>
+          <DialogContent className="max-w-5xl max-h-[92vh] overflow-y-auto p-0 gap-0">
+            <button
+              onClick={() => { setModalOpen(false); setModalInquiry(false); }}
+              className="absolute top-3 right-3 z-20 p-2 bg-white/90 hover:bg-white rounded-full shadow-md transition-colors"
+            >
+              <X size={18} />
+            </button>
+
+            {modalInquiry ? (
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-bold text-foreground">{t('products.inquiryFor')}</h2>
+                </div>
+                <div className="mb-6 p-4 bg-card rounded-lg border border-border">
+                  <p className="text-accent font-semibold text-lg">{selectedModalProduct.name}</p>
+                </div>
+                <InquiryForm />
+                <button
+                  onClick={() => setModalInquiry(false)}
+                  className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ← {t('products.backToProduct')}
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-5">
+                {/* Left: Image - 2 cols */}
+                <div className="col-span-2 relative bg-gradient-to-br from-accent/8 to-secondary/8">
+                  <div className="relative aspect-square">
+                    {(() => {
+                      const imgs = (selectedModalProduct.images || []).map((img: string) => '/products/mic/' + (img.split('/').pop() || img));
+                      const hasImgs = imgs.length > 0;
+                      const hasMultiple = imgs.length > 1;
+                      return (
+                        <>
+                          {hasImgs ? (
+                            <img src={imgs[modalImageIdx]} alt={selectedModalProduct.name} className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <div className="text-center"><div className="text-8xl mb-4">🧶</div><p className="text-muted-foreground">{t('products.premiumCashmere')}</p></div>
+                            </div>
+                          )}
+                          {hasMultiple && (
+                            <>
+                              <button onClick={() => setModalImageIdx(i => (i - 1 + imgs.length) % imgs.length)} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/85 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors" aria-label="Previous"><ChevronLeft size={18} /></button>
+                              <button onClick={() => setModalImageIdx(i => (i + 1) % imgs.length)} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/85 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors" aria-label="Next"><ChevronRight size={18} /></button>
+                              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 text-white text-xs px-3 py-1 rounded-full">{modalImageIdx + 1} / {imgs.length}</div>
+                            </>
+                          )}
+                        </>
+                      );
+                    })()}
+                  </div>
+                  {(() => { const imgs = (selectedModalProduct.images || []).map((img: string) => '/products/mic/' + (img.split('/').pop() || img)); return imgs.length > 1 ? (
+                    <div className="flex gap-2 p-4 overflow-x-auto">
+                      {imgs.map((img: string, idx: number) => (
+                        <button key={idx} onClick={() => setModalImageIdx(idx)} className={`flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-colors ${idx === modalImageIdx ? 'border-accent' : 'border-transparent hover:border-border'}`}>
+                          <img src={img} alt="" className="w-full h-full object-cover" onError={(e) => (e.target as HTMLImageElement).style.display = 'none'} />
+                        </button>
+                      ))}
+                    </div>
+                  ) : null; })()}
+                </div>
+
+                {/* Right: Info - 3 cols */}
+                <div className="col-span-3 p-6 md:p-7 flex flex-col">
+                  {/* Category badge + Title */}
+                  <div className="mb-3">
+                    <span className="inline-block text-xs font-medium text-accent bg-accent/10 px-3 py-1 rounded-full mb-2">Premium Cashmere</span>
+                    <h2 className="text-2xl font-bold text-foreground leading-tight">{selectedModalProduct.name}</h2>
+                  </div>
+
+                  {/* Price row */}
+                  <div className="flex items-baseline gap-3 mb-4">
+                    <span className="text-3xl font-bold text-accent">${selectedModalProduct.price}{selectedModalProduct.currency && selectedModalProduct.currency !== 'USD' ? ` ${selectedModalProduct.currency}` : ''}</span>
+                    <span className="text-sm text-muted-foreground">/ {t('products.perPieces')}</span>
+                    <span className="ml-auto text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded">MOQ {selectedModalProduct.moq} pcs</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">{selectedModalProduct.description}</p>
+
+                  {/* Specs grid */}
+                  <div className="grid grid-cols-2 gap-2.5 mb-5">
+                    {selectedModalProduct.material && (
+                      <div className="bg-muted/50 rounded-lg border border-border p-3">
+                        <div className="flex items-center gap-2 mb-1"><Package size={13} className="text-accent" /><span className="text-xs text-muted-foreground uppercase tracking-wide">{t('products.material')}</span></div>
+                        <p className="font-semibold text-foreground text-sm">{selectedModalProduct.material}</p>
+                      </div>
+                    )}
+                    {selectedModalProduct.micron && (
+                      <div className="bg-muted/50 rounded-lg border border-border p-3">
+                        <div className="flex items-center gap-2 mb-1"><Star size={13} className="text-accent" /><span className="text-xs text-muted-foreground uppercase tracking-wide">{t('products.micron')}</span></div>
+                        <p className="font-semibold text-foreground text-sm">{selectedModalProduct.micron}</p>
+                      </div>
+                    )}
+                    <div className="bg-muted/50 rounded-lg border border-border p-3">
+                      <div className="flex items-center gap-2 mb-1"><Shield size={13} className="text-accent" /><span className="text-xs text-muted-foreground uppercase tracking-wide">{t('products.moq')}</span></div>
+                      <p className="font-semibold text-foreground text-sm">{selectedModalProduct.moq} pcs</p>
+                    </div>
+                    {selectedModalProduct.lead && (
+                      <div className="bg-muted/50 rounded-lg border border-border p-3">
+                        <div className="flex items-center gap-2 mb-1"><Clock size={13} className="text-accent" /><span className="text-xs text-muted-foreground uppercase tracking-wide">{t('products.leadTime')}</span></div>
+                        <p className="font-semibold text-foreground text-sm">{selectedModalProduct.lead}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Colors */}
+                  {selectedModalProduct.colors && selectedModalProduct.colors.length > 0 && (
+                    <div className="mb-5">
+                      <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">{t('products.availableColors')}:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedModalProduct.colors.map((color: string, idx: number) => (
+                          <span key={idx} className="text-xs bg-muted border border-border text-foreground px-3 py-1 rounded-full">{color}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Divider */}
+                  <div className="border-t border-border mb-5"></div>
+
+                  {/* Trust badges */}
+                  <div className="flex gap-6 mb-5">
+                    <div className="text-center flex-1 bg-muted/30 rounded-lg py-2 px-2">
+                      <div className="text-accent font-bold text-sm">23+</div>
+                      <div className="text-xs text-muted-foreground">{t('products.yearsExp')}</div>
+                    </div>
+                    <div className="text-center flex-1 bg-muted/30 rounded-lg py-2 px-2">
+                      <div className="text-accent font-bold text-sm">500+</div>
+                      <div className="text-xs text-muted-foreground">{t('products.globalBrands')}</div>
+                    </div>
+                    <div className="text-center flex-1 bg-muted/30 rounded-lg py-2 px-2">
+                      <div className="text-accent font-bold text-sm">OEKO-TEX®</div>
+                      <div className="text-xs text-muted-foreground">{t('products.certified')}</div>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="mt-auto flex flex-col gap-2.5">
+                    <button onClick={() => setModalInquiry(true)} className="w-full px-6 py-3.5 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-[#C9A227] transition-colors text-sm">{t('products.requestQuote')}</button>
+                    <a href="/contact" className="w-full px-6 py-3.5 border-2 border-accent text-accent rounded-lg font-semibold hover:bg-accent/10 transition-colors text-sm text-center">{t('products.contactUs')}</a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
     </>
   );
