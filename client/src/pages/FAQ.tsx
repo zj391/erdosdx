@@ -31,11 +31,20 @@ export default function FAQ() {
       <Helmet>
         <title>FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions</title>
         <meta name="description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://erdosdx.com/faq" />
         <meta property="og:title" content="FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions" />
         <meta property="og:description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FAQ | DONGXIAO® CASHMERE - Frequently Asked Questions" />
-        <meta name="twitter:description" content="Find answers to common B2B wholesale questions about MOQ, sampling, shipping, payment terms, and quality assurance for cashmere products." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "What is your minimum order quantity (MOQ)?", "acceptedAnswer": { "@type": "Answer", "text": "Our MOQ varies by product type, typically starting at 50 pieces per style for knitwear and 100 pieces for accessories. Contact us for specific requirements." }},
+            { "@type": "Question", "name": "Do you offer free samples?", "acceptedAnswer": { "@type": "Answer", "text": "We offer sample development with cost reimbursement on bulk orders. Sample lead time is 7-15 days depending on complexity." }},
+            { "@type": "Question", "name": "What are your payment terms?", "acceptedAnswer": { "@type": "Answer", "text": "Standard payment terms are 30% deposit, 70% balance before shipment. LC and other payment methods are negotiable for established clients." }}
+          ]
+        })}</script>
       </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />

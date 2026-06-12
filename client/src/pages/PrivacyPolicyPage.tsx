@@ -13,6 +13,20 @@ export default function PrivacyPolicyPage() {
       <Helmet>
         <title>{t('privacy.title')} - DONGXIAO® CASHMERE</title>
         <meta name="description" content="Privacy Policy - DONGXIAO Cashmere, Premium wholesale cashmere products from Inner Mongolia." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://erdosdx.com/privacy-policy" />
+        <meta property="og:title" content="Privacy Policy - DONGXIAO® CASHMERE" />
+        <meta property="og:description" content="Privacy Policy for DONGXIAO Cashmere - Premium wholesale cashmere supplier from Inner Mongolia." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://erdosdx.com/privacy-policy" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Privacy Policy",
+          "description": "Privacy Policy for DONGXIAO Cashmere B2B wholesale operations",
+          "url": "https://erdosdx.com/privacy-policy",
+          "publisher": { "@type": "Organization", "name": "DONGXIAO® CASHMERE", "url": "https://erdosdx.com" }
+        })}</script>
       </Helmet>
       <Navigation />
       <div className="max-w-4xl mx-auto px-4 py-16">

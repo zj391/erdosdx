@@ -97,11 +97,19 @@ export default function Products() {
       <Helmet>
         <title>Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier</title>
         <meta name="description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://erdosdx.com/products" />
         <meta property="og:title" content="Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier" />
         <meta property="og:description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+        <meta property="og:url" content="https://erdosdx.com/products" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Premium Cashmere Products | DONGXIAO® Wholesale Knitwear Supplier" />
-        <meta name="twitter:description" content="Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories. B2B pricing and bulk orders available." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Premium Cashmere Products",
+          "description": "Browse our complete collection of premium wholesale cashmere products including sweaters, scarves, hats, and accessories.",
+          "url": "https://erdosdx.com/products"
+        })}</script>
       </Helmet>
     <div className="min-h-screen bg-background">
       <Navigation />
