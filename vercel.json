@@ -4,6 +4,7 @@
   "outputDirectory": "client/dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/((?!assets/)(?!privacy-policy.html)(?!privacy-policy$).*)", "destination": "/index.html" }
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ]
 }
